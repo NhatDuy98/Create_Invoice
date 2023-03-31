@@ -1,0 +1,153 @@
+* {
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 0;
+    margin: 0;
+}
+.mrsimple {
+
+}
+.headmrsimple {
+    height: 60px;
+    background-color: brown;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.headmrsimple > a {
+    text-decoration: none;
+}
+.headmrsimple-name {
+    color: white;
+}
+.headmrsimple-name:hover {
+    cursor: pointer;
+}
+.headmrsimple-find {
+    display: flex;
+    justify-content: flex-start;
+}
+.headmrsimple-find-1 i:hover {
+    cursor: pointer;
+}
+.headmrsimple-find-2 {
+    background-color: brown;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+::placeholder {
+    color: white;
+}
+.headmrsimple-right {
+    width: 65%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.headmrsimple-option{
+    width: 65%;
+    display: flex;
+    justify-content: space-between;
+}
+.headmrsimple-option > select{
+    background-color: brown;
+    border: none;
+    color: white;
+}
+.headmrsimple-option > select > option {
+    background-color: white;
+    color: black;
+}
+.headmrsimple-login {
+    color: white;
+}
+.headmrsimple-login:hover {
+    cursor: pointer;
+    color: yellow;
+}
+.headmrsimple-contact {
+    color: white;
+}
+.headmrsimple-contact:hover {
+    cursor: pointer;
+    color: yellow;
+}
+.headmrsimple-icon > i:hover {
+    color: yellow;
+    cursor: pointer;
+}
+.bodymrsimple {
+    display: flex;
+    flex-wrap: wrap;
+}
+.mrsimple-product {
+    width: 33.33%;
+}
+.mrsimple-product:hover {
+    transform: scale(1.1);
+    transition: 0.7s;
+}
+.mrsimple-photo {
+    display: flex;
+    position: relative;
+    margin: 10%;
+}
+.mrsimple-photo1 {
+    width: 100%;
+}
+.mrsimple-photo1:hover{
+    cursor: pointer;
+}
+.icon1 {
+    position: absolute;
+    right: 10px;
+}
+.icon1:hover {
+    color: yellowgreen;
+    cursor: pointer;
+}
+.icon2 {
+    position: absolute;
+    background-color: rgb(204, 223, 167);
+}
+.mrsimple-info {
+    text-align: center;
+}
+.name:hover {
+    color: yellowgreen;
+    cursor: pointer;
+}
+.mrsimple-info > p > del {
+    color: gray;
+    font-style: oblique;
+    font-size: 15px;
+}
+.footmrsimple-name {
+    text-align: center;
+}
+.footmrsimple-name:hover {
+    color: yellowgreen;
+    cursor: pointer;
+}
+.footmrsimple-input {
+    background-color: grey;
+}
+.footmrsimple-input-name {
+    font-size: 15px;
+    color: white;
+}
+.footmrsimple-input > div > input {
+    font-size: 15px;
+}
+.footmrsimple-input > div > button {
+    font-size: 15px;
+    background-color: rgb(77, 18, 18);
+    color: white;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+}
+.footmrsimple-input > div > button:hover {
+    cursor: pointer;
+}
