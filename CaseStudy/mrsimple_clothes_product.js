@@ -47,19 +47,50 @@ function formatNumber(number) {
 }
 productClothes();
 
-function addClothes() {
-    let shopCart = [];
-    let id = Number(document.getElementsByClassName("footmrsimple-input-name")[0].value);
-    let quantity = Number(document.getElementById("footmrsimple-input-name")[1].value);
+// function addClothes() {
+//     let shopCart = [];
+//     let id = Number(document.getElementsByClassName("footmrsimple-input-name")[0].value);
+//     let quantity = Number(document.getElementById("footmrsimple-input-name")[1].value);
 
-    for (let i = 0 ; i < clothes.length ; i++) {
-        if ( id == clothes.id[i]) {
-            shopCart.push(clothes.id[i]);
-            shopCart.push(clothes.name[i]);
-            shopCart.push(clothes.price[i]);
-        }
-        else {
-            alert("Vui lòng nhập lại ID sản phẩm");
-        }
+//     for (let i = 0 ; i < clothes.length ; i++) {
+//         if ( id == clothes.id[i]) {
+//             shopCart.push(clothes.id[i]);
+//             shopCart.push(clothes.name[i]);
+//             shopCart.push(clothes.price[i]);
+//         }
+//         else {
+//             alert("Vui lòng nhập lại ID sản phẩm");
+//         }
+//     }
+// }
+
+class Bill {
+    constructor(id , item , quantity , price) {
+        this.id = id ;
+        this.item = item ;
+        this.quantity = quantity ;
+        this.price = price ;
+        this.amount = this.quantity * this.price;
     }
 }
+
+let invoices = [];
+
+function renderBill() {
+    for( let i = 0 ; i < invoices.length ; i++) {
+        document.querySelector(".table-body-invoice").innerHTML += 
+            `<tr>
+                <td>1</td>
+                <td>TÚI HỘP ĐEO CHÉO DA XÁM | + 2 MÀU</td>
+                <td>1</td>
+                <td>1279200Đ</td>
+                <td>1279200Đ</td>
+                <td>
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            `;
+    }
+}
+renderBill();

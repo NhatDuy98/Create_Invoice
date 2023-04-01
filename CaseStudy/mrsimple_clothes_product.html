@@ -65,37 +65,75 @@
         <div class="footmrsimple">
             <div class="footmrsimple-input">
                 <div>
-                    <label class="footmrsimple-input-name" for="">NHẬP ID HÀNG</label>
+                    <label class="footmrsimple-input-value" for="clothesName">NHẬP ID HÀNG</label>
+                    <input type="text">
+                </div>
+                <div>
+                    <label class="footmrsimple-input-value" for="quantity">NHẬP SỐ LƯỢNG</label>
                     <input type="number">
                 </div>
                 <div>
-                    <label class="footmrsimple-input-name" for="">NHẬP SỐ LƯỢNG</label>
+                    <label class="footmrsimple-input-value" for="price">NHẬP GIÁ</label>
                     <input type="number">
                 </div>
                 <div class="footmrsimple-add">
                     <button onclick="addClothes()">ADD TO CARD</button>
                 </div>
             </div>
-            <div>
-                <table>
+            <div class="footmrsimple-invoice">
+                <table class="table-invoice">
                     <thead>
                         <tr>
                             <th>STT</th>
                             <th>SẢN PHẨM</th>
                             <th>SỐ LƯỢNG</th>
+                            <th>ĐƠN GIÁ</th>
                             <th>GIÁ TIỀN</th>
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="table-body-invoice">
+                        <!-- <tr>
+                            <td>1</td>
+                            <td>TÚI HỘP ĐEO CHÉO DA XÁM | + 2 MÀU</td>
+                            <td>1</td>
+                            <td>1279200Đ</td>
+                            <td>1279200Đ</td>
+                            <td>
+                                <i class="fa-solid fa-pen"></i>
+                                <i class="fa-solid fa-trash"></i>
+                            </td>
+                        </tr>
                         <tr>
                             <td>1</td>
                             <td>TÚI HỘP ĐEO CHÉO DA XÁM | + 2 MÀU</td>
                             <td>1</td>
                             <td>1279200Đ</td>
-                            <td><i class="fa-solid fa-trash"></i></td>
+                            <td>1279200Đ</td>
+                            <td>
+                                <i class="fa-solid fa-pen"></i>
+                                <i class="fa-solid fa-trash"></i>
+                            </td>
                         </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>TÚI HỘP ĐEO CHÉO DA XÁM | + 2 MÀU</td>
+                            <td>1</td>
+                            <td>1279200Đ</td>
+                            <td>1279200Đ</td>
+                            <td>
+                                <i class="fa-solid fa-pen"></i>
+                                <i class="fa-solid fa-trash"></i>
+                            </td>
+                        </tr> -->
                     </tbody>
+                    <tfoot class="footmrsimple-total">
+                        <tr>
+                            <th colspan="4">TOTAL</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>

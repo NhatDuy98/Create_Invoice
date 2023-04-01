@@ -35,6 +35,7 @@
     border-top: none;
     border-right: none;
     border-left: none;
+    outline: none;
 }
 ::placeholder {
     color: white;
@@ -54,6 +55,7 @@
     background-color: brown;
     border: none;
     color: white;
+    outline: none;
 }
 .headmrsimple-option > select > option {
     background-color: white;
@@ -133,12 +135,13 @@
 .footmrsimple-input {
     background-color: grey;
 }
-.footmrsimple-input-name {
+.footmrsimple-input-value {
     font-size: 15px;
     color: white;
 }
 .footmrsimple-input > div > input {
     font-size: 15px;
+    outline: none;
 }
 .footmrsimple-input > div > button {
     font-size: 15px;
@@ -150,4 +153,28 @@
 }
 .footmrsimple-input > div > button:hover {
     cursor: pointer;
+}
+.footmrsimple-invoice {
+    text-align: center;
+    margin-top: 20px;
+}
+.footmrsimple-invoice > table > thead > tr > th {
+    padding: 15px;
+}
+.footmrsimple-invoice > table > tbody > tr > td {
+    padding: 15px;
+    border: none;
+    font-size: 15px;
+}
+.footmrsimple-invoice > table > tbody > tr:hover {
+    background-color: rgb(204, 199, 199);
+}
+.footmrsimple-invoice > table > tbody > tr > td > i:hover {
+    color: red;
+    cursor: pointer;
+}
+.footmrsimple-total {
+    background-color: rgb(122, 121, 121);
+    text-align: right;
+    color: white;
 }
