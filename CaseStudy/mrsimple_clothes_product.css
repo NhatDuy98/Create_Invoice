@@ -125,6 +125,9 @@
     font-style: oblique;
     font-size: 15px;
 }
+.footmrsimple {
+    display: none;
+}
 .footmrsimple-name {
     text-align: center;
 }
@@ -143,16 +146,26 @@
     font-size: 15px;
     outline: none;
 }
-.footmrsimple-input > div > button {
-    font-size: 15px;
-    background-color: rgb(77, 18, 18);
-    color: white;
-    border-left: none;
-    border-right: none;
-    border-top: none;
+.footmrsimple-add {
+    display: flex;
+    justify-content: start;
 }
-.footmrsimple-input > div > button:hover {
+.footmrsimple-add > button {
+    font-size: 12px;
+    background-color: rgba(150, 120, 120, 0.89);
+    color: white;
+    border: 1px;
+    outline: none;
+    padding: 10px;
+}
+.footmrsimple-add > button:hover {
     cursor: pointer;
+}
+.btn-editClothes-save {
+    display: none;
+}
+.btn-editClothes-cancle {
+    display: none;
 }
 .footmrsimple-invoice {
     text-align: center;

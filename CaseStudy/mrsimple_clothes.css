@@ -32,6 +32,7 @@
     border-top: none;
     border-right: none;
     border-left: none;
+    outline: none;
 }
 ::placeholder {
     color: white;
@@ -46,11 +47,15 @@
     width: 65%;
     display: flex;
     justify-content: space-between;
+    outline: none;
+
 }
 .headmrsimple-option > select{
     background-color: brown;
     border: none;
     color: white;
+    outline: none;
+
 }
 .headmrsimple-option > select > option {
     background-color: white;
@@ -115,6 +120,8 @@
     border-left: none;
     border-right: none;
     margin-top: 20px;
+    outline: none;
+
 }
 .mrsimple-end > div > button {
     background-color: brown;

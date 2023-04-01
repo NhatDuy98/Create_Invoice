@@ -43,54 +43,149 @@ function productClothes() {
     }
 }
 function formatNumber(number) {
-    return number.toLocaleString('vi-VN', {style : 'currency', currency : 'VND'});
+    return number.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
 }
 productClothes();
 
-// function addClothes() {
-//     let shopCart = [];
-//     let id = Number(document.getElementsByClassName("footmrsimple-input-name")[0].value);
-//     let quantity = Number(document.getElementById("footmrsimple-input-name")[1].value);
-
-//     for (let i = 0 ; i < clothes.length ; i++) {
-//         if ( id == clothes.id[i]) {
-//             shopCart.push(clothes.id[i]);
-//             shopCart.push(clothes.name[i]);
-//             shopCart.push(clothes.price[i]);
-//         }
-//         else {
-//             alert("Vui lòng nhập lại ID sản phẩm");
-//         }
-//     }
-// }
-
+function showForm() {
+    document.querySelector(".footmrsimple").style.display = "block";
+}
+function hideForm() {
+    document.querySelector(".footmrsimple").style.display = "none";
+}
 class Bill {
-    constructor(id , item , quantity , price) {
-        this.id = id ;
-        this.item = item ;
-        this.quantity = quantity ;
-        this.price = price ;
+    constructor(id, item, quantity, price) {
+        this.id = id;
+        this.item = item;
+        this.quantity = quantity;
+        this.price = price;
         this.amount = this.quantity * this.price;
     }
 }
 
+
 let invoices = [];
 
 function renderBill() {
-    for( let i = 0 ; i < invoices.length ; i++) {
-        document.querySelector(".table-body-invoice").innerHTML += 
+    document.getElementById("table-body-invoice").innerHTML = "";
+    let total = 0;
+    for (let i = 0; i < invoices.length; i++) {
+        document.getElementById("table-body-invoice").innerHTML +=
             `<tr>
-                <td>1</td>
-                <td>TÚI HỘP ĐEO CHÉO DA XÁM | + 2 MÀU</td>
-                <td>1</td>
-                <td>1279200Đ</td>
-                <td>1279200Đ</td>
+                <td>${invoices[i].id}</td>
+                <td>${invoices[i].item}</td>
+                <td>${invoices[i].quantity}</td>
+                <td>${formatNumber(invoices[i].price)}</td>
+                <td>${formatNumber(invoices[i].amount)}</td>
                 <td>
-                    <i class="fa-solid fa-pen"></i>
-                    <i class="fa-solid fa-trash"></i>
+                    <i onclick="editInvoice(${invoices[i].id})" class="fa-solid fa-pen"></i>
+                    <i onclick="deleteInvoice(${invoices[i].id})" class="fa-solid fa-trash"></i>
                 </td>
             </tr>
             `;
+        total += invoices[i].amount;
+    }
+    document.getElementById('total').innerHTML = formatNumber(total);
+}
+function resetClothes() {
+    document.getElementById('item').value = "";
+    document.getElementById('quantity').value = "";
+    document.getElementById('price').value = "";
+}
+
+function addClothes() {
+    let item = document.getElementById('item').value;
+    let quantity = Number(document.getElementById('quantity').value);
+    let price = Number(document.getElementById('price').value);
+
+    if (item == '' || quantity == '' || price == 0) {
+        alert('Vui lòng nhập đầy đủ thông tin')
+    }
+    else {
+        let number = findMaxId() + 1;
+        let newbill = new Bill(number, item, quantity, price);
+        invoices.push(newbill);
+        renderBill();
+
     }
 }
-renderBill();
+
+function findMaxId() {
+    let maxid = 0;
+    for (let i = 0; i < invoices.length; i++) {
+        if (maxid < invoices[i].id) {
+            maxid = invoices[i].id;
+        }
+    }
+    return maxid;
+}
+
+function editInvoice(id) {
+    let bill = findInvoiceById(id);
+
+    document.getElementById('item').value = bill.item;
+    document.getElementById('quantity').value = bill.quantity;
+    document.getElementById('price').value = bill.price;
+    document.getElementById('invoiceId').value = bill.id;
+
+    document.querySelector('.btn-editClothes-save').style.display = "block";
+    document.querySelector('.btn-editClothes-cancle').style.display = "block";
+    document.querySelector('.btn-addClothes').style.display = "none";
+    document.querySelector('.btn-resetClothes').style.display = "none";
+}
+
+function findInvoiceById(id) {
+    for (let i = 0; i < invoices.length; i++) {
+        if (invoices[i].id == id) {
+            return invoices[i];
+        }
+    }
+    return null;
+}
+
+function saveEdit() {
+    let id = Number(document.getElementById('invoiceId').value);
+    let item = document.getElementById('item').value;
+    let quantity = Number(document.getElementById('quantity').value);
+    let price = Number(document.getElementById('price').value);
+    let amount = this.quantity * this.price;
+
+    let bNew = new Bill(id, item, quantity, price, amount);
+    updateBillById(id, bNew);
+    renderBill();
+    document.querySelector('.btn-addClothes').style.display = "block";
+    document.querySelector('.btn-resetClothes').style.display = "block";
+    document.querySelector('.btn-editClothes-save').style.display = "none";
+    document.querySelector('.btn-editClothes-cancle').style.display = "none";
+}
+
+function updateBillById(id, newBill) {
+    for (let i = 0; i < invoices.length; i++) {
+        if (invoices[i].id == id) {
+            invoices[i].item = newBill.item;
+            invoices[i].quantity = newBill.quantity;
+            invoices[i].price = newBill.price;
+            invoices[i].amount = newBill.amount;
+        }
+    }
+}
+
+function cancleEdit() {
+    document.querySelector('.btn-addClothes').style.display = "block";
+    document.querySelector('.btn-resetClothes').style.display = "block";
+    document.querySelector('.btn-editClothes-save').style.display = "none";
+    document.querySelector('.btn-editClothes-cancle').style.display = "none";
+}
+
+function deleteInvoice(id) {
+    let deleteInvoice = confirm("Bạn có chắc chắn muốn xóa không?");
+    let bill = findInvoiceById(id);
+    if( deleteInvoice == true ) {
+        invoices.splice(bill , 1);
+        renderBill();
+        // let newbill = new Bill ( findMaxId() - 1 , invoices.splice(bill.item , 1) , invoices.splice(bill.quantity , 1) , invoices.splice(bill.price , 1) , invoices.splice(bill.amount) , 1);
+        // invoices.push(newbill);
+        // findMaxId() - 1 ;
+    }
+}
+

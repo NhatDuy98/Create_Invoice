@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MRSIMPLE</title>
+    <link rel="icon" href="https://mrsimple.vn/img/favicon.jpg?time=1680331104">
     <link rel="stylesheet" href="mrsimple_clothes_product.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -59,25 +60,29 @@
             </div> -->
         </div>
         <div class="footmrsimple-name">
-            <b>XEM GIỎ HÀNG</b>
+            <b ondblclick="hideForm()" onclick="showForm()">TẠO GIỎ HÀNG</b>
         </div>
         <hr>
         <div class="footmrsimple">
             <div class="footmrsimple-input">
                 <div>
-                    <label class="footmrsimple-input-value" for="clothesName">NHẬP ID HÀNG</label>
-                    <input type="text">
+                    <label class="footmrsimple-input-value" for="clothesName">NHẬP TÊN HÀNG</label>
+                    <input id="item" type="text">
+                    <input type="hidden" id="invoiceId" value="0">
                 </div>
                 <div>
                     <label class="footmrsimple-input-value" for="quantity">NHẬP SỐ LƯỢNG</label>
-                    <input type="number">
+                    <input id="quantity" type="number">
                 </div>
                 <div>
                     <label class="footmrsimple-input-value" for="price">NHẬP GIÁ</label>
-                    <input type="number">
+                    <input id="price" type="number">
                 </div>
                 <div class="footmrsimple-add">
-                    <button onclick="addClothes()">ADD TO CARD</button>
+                    <button class="btn-addClothes" onclick="addClothes()">ADD TO CARD</button>
+                    <button class="btn-resetClothes" onclick="resetClothes()">RESET</button>
+                    <button class="btn-editClothes-save" onclick="saveEdit()">SAVE</button>
+                    <button class="btn-editClothes-cancle" onclick="cancleEdit()">CANCLE</button>
                 </div>
             </div>
             <div class="footmrsimple-invoice">
@@ -92,7 +97,7 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody class="table-body-invoice">
+                    <tbody id="table-body-invoice">
                         <!-- <tr>
                             <td>1</td>
                             <td>TÚI HỘP ĐEO CHÉO DA XÁM | + 2 MÀU</td>
@@ -100,11 +105,11 @@
                             <td>1279200Đ</td>
                             <td>1279200Đ</td>
                             <td>
-                                <i class="fa-solid fa-pen"></i>
-                                <i class="fa-solid fa-trash"></i>
+                                <i onclick="editInvoice()" class="fa-solid fa-pen"></i>
+                                <i onclick="deleteInvoice()" class="fa-solid fa-trash"></i>
                             </td>
-                        </tr>
-                        <tr>
+                        </tr> -->
+                        <!-- <tr>
                             <td>1</td>
                             <td>TÚI HỘP ĐEO CHÉO DA XÁM | + 2 MÀU</td>
                             <td>1</td>
@@ -130,7 +135,7 @@
                     <tfoot class="footmrsimple-total">
                         <tr>
                             <th colspan="4">TOTAL</th>
-                            <th></th>
+                            <th id="total"></th>
                             <th></th>
                         </tr>
                     </tfoot>
