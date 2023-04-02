@@ -66,6 +66,22 @@ class Bill {
 
 let invoices = [];
 
+let invoices_key = "data";
+
+function init() {
+    if( localStorage.getItem(invoices_key) == null ) {
+        invoices = [
+            new Bill( 1 , "1 | TÚI HỘP ĐEO CHÉO DA XÁM " , 2 , 1279200),
+            new Bill( 2 , "6 | BALO DÂY RÚT DA TRẮNG/ĐEN" , 2 , 2799200)
+        ];
+        localStorage.setItem(invoices_key , JSON.stringify(invoices));
+    }
+    else {
+        invoices = JSON.parse(localStorage.getItem(invoices_key));
+    }
+}
+init();
+
 function renderBill() {
     document.getElementById("table-body-invoice").innerHTML = "";
     let total = 0;
@@ -105,8 +121,9 @@ function addClothes() {
         let number = findMaxId() + 1;
         let newbill = new Bill(number, item, quantity, price);
         invoices.push(newbill);
+        localStorage.setItem(invoices_key , JSON.stringify(invoices));
         renderBill();
-
+        resetClothes()
     }
 }
 
@@ -152,7 +169,9 @@ function saveEdit() {
 
     let bNew = new Bill(id, item, quantity, price, amount);
     updateBillById(id, bNew);
+    localStorage.setItem(invoices_key , JSON.stringify(invoices));
     renderBill();
+    resetClothes();
     document.querySelector('.btn-addClothes').style.display = "block";
     document.querySelector('.btn-resetClothes').style.display = "block";
     document.querySelector('.btn-editClothes-save').style.display = "none";
@@ -179,13 +198,19 @@ function cancleEdit() {
 
 function deleteInvoice(id) {
     let deleteInvoice = confirm("Bạn có chắc chắn muốn xóa không?");
-    let bill = findInvoiceById(id);
-    if( deleteInvoice == true ) {
-        invoices.splice(bill , 1);
-        renderBill();
-        // let newbill = new Bill ( findMaxId() - 1 , invoices.splice(bill.item , 1) , invoices.splice(bill.quantity , 1) , invoices.splice(bill.price , 1) , invoices.splice(bill.amount) , 1);
-        // invoices.push(newbill);
-        // findMaxId() - 1 ;
+    // let bill = findInvoiceById(id);
+    if (deleteInvoice == true) {
+        for (let i in invoices) {
+            if (invoices[i].id == id) {
+                invoices.splice(i, 1);
+                localStorage.setItem(invoices_key , JSON.stringify(invoices));
+                renderBill();
+            }
+        }
     }
+
+    // let newbill = new Bill ( findMaxId() - 1 , invoices.splice(bill.item , 1) , invoices.splice(bill.quantity , 1) , invoices.splice(bill.price , 1) , invoices.splice(bill.amount) , 1);
+    // invoices.push(newbill);
+    // findMaxId() - 1 ;
 }
 
